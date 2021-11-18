@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IFdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdBids">
+    <Key>
+      <PropertyRef Name="BidId" />
+    </Key>
+    <Property Name="BidId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdId" Type="int" Nullable="false" />
+    <Property Name="BidAmount" Type="int" Nullable="false" />
+    <Property Name="BidDate" Type="datetime" Nullable="false" />
+    <Property Name="IsHighestBid" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdComments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CommentDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdReports">
+    <Key>
+      <PropertyRef Name="ReportId" />
+    </Key>
+    <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdId" Type="int" Nullable="false" />
+    <Property Name="ReportReason" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReportDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ads">
+    <Key>
+      <PropertyRef Name="AdId" />
+    </Key>
+    <Property Name="AdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AdCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdLocality" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VendorPhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdImageOne" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdImageTwo" Type="nvarchar(max)" />
+    <Property Name="AdImageThree" Type="nvarchar(max)" />
+    <Property Name="AdImageFour" Type="nvarchar(max)" />
+    <Property Name="AdImageFive" Type="nvarchar(max)" />
+    <Property Name="AdDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdSellingPrice" Type="int" Nullable="false" />
+    <Property Name="AdHighestBid" Type="int" />
+    <Property Name="Filter" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsSold" Type="bit" />
+    <Property Name="SoldDate" Type="datetime" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="DeletedDate" Type="datetime" />
+    <Property Name="IsEligibleForRepost" Type="bit" />
+    <Property Name="NoOfDemands" Type="int" />
+    <Property Name="AdDivision" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDisplayPhoneNumber" Type="bit" Nullable="false" />
+    <Property Name="NoOfBids" Type="int" Nullable="false" />
+    <Property Name="SoldPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdsDemands">
+    <Key>
+      <PropertyRef Name="DemandId" />
+    </Key>
+    <Property Name="DemandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdId" Type="int" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DemandDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CityMasterTable">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locality">
+    <Key>
+      <PropertyRef Name="LocalityId" />
+    </Key>
+    <Property Name="LocalityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocalityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocalityCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocalityDivision" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFeedback">
+    <Key>
+      <PropertyRef Name="UserFeedbackId" />
+    </Key>
+    <Property Name="UserFeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrentUserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrentUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReviewerUserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReviewerUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FeedbackText" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FeedbackRating" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+    <Property Name="ReviewedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserNotifications">
+    <Key>
+      <PropertyRef Name="NotificationId" />
+    </Key>
+    <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdOrWishId" Type="int" Nullable="false" />
+    <Property Name="isFirstBid" Type="bit" Nullable="false" />
+    <Property Name="isHigherBid" Type="bit" Nullable="false" />
+    <Property Name="isDemand" Type="bit" Nullable="false" />
+    <Property Name="isFulfill" Type="bit" Nullable="false" />
+    <Property Name="isCommentForAd" Type="bit" Nullable="false" />
+    <Property Name="isCommentForWish" Type="bit" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NotificationDate" Type="datetime" Nullable="false" />
+    <Property Name="isRead" Type="bit" Nullable="false" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VendorToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isNew" Type="bit" />
+    <Property Name="isDisplayPhoneNumber" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Userid" />
+    </Key>
+    <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login_token" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserProfileImage" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="bigint" />
+    <Property Name="Rating" Type="bigint" />
+    <Property Name="NumberOfBids" Type="int" />
+    <Property Name="NumberOfSales" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsUpdated" Type="datetime" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="LastLogin" Type="datetime" Nullable="false" />
+    <Property Name="IsLoggedIn" Type="bit" />
+    <Property Name="UserBadge" Type="int" Nullable="false" />
+    <Property Name="FeedbackRating" Type="decimal" Precision="18" Scale="1" />
+  </EntityType>
+  <EntityType Name="WishComments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WishId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CommentDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WishFulfill">
+    <Key>
+      <PropertyRef Name="FulfillId" />
+    </Key>
+    <Property Name="FulfillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WishId" Type="int" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FullfillDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WishList">
+    <Key>
+      <PropertyRef Name="WishId" />
+    </Key>
+    <Property Name="WishId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WishDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WishCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WishLocality" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WishCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WishImage" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsReported" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="NoOfFulfill" Type="int" />
+    <Property Name="WishDivision" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDisplayPhoneNumber" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WishReports">
+    <Key>
+      <PropertyRef Name="ReportId" />
+    </Key>
+    <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WishId" Type="int" Nullable="false" />
+    <Property Name="ReportReason" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReportDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="IFdbModelStoreContainer">
+    <EntitySet Name="AdBids" EntityType="Self.AdBids" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdComments" EntityType="Self.AdComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdReports" EntityType="Self.AdReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ads" EntityType="Self.Ads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdsDemands" EntityType="Self.AdsDemands" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CityMasterTable" EntityType="Self.CityMasterTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locality" EntityType="Self.Locality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserFeedback" EntityType="Self.UserFeedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserNotifications" EntityType="Self.UserNotifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WishComments" EntityType="Self.WishComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WishFulfill" EntityType="Self.WishFulfill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WishReports" EntityType="Self.WishReports" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

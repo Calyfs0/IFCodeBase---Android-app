@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IFdbModelStoreContainer" CdmEntityContainer="IFdbEntities">
+    <EntitySetMapping Name="AdBids">
+      <EntityTypeMapping TypeName="IFdbModel.AdBid">
+        <MappingFragment StoreEntitySet="AdBids">
+          <ScalarProperty Name="BidId" ColumnName="BidId" />
+          <ScalarProperty Name="AdId" ColumnName="AdId" />
+          <ScalarProperty Name="BidAmount" ColumnName="BidAmount" />
+          <ScalarProperty Name="BidDate" ColumnName="BidDate" />
+          <ScalarProperty Name="IsHighestBid" ColumnName="IsHighestBid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdComments">
+      <EntityTypeMapping TypeName="IFdbModel.AdComment">
+        <MappingFragment StoreEntitySet="AdComments">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="AdId" ColumnName="AdId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdReports">
+      <EntityTypeMapping TypeName="IFdbModel.AdReport">
+        <MappingFragment StoreEntitySet="AdReports">
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="AdId" ColumnName="AdId" />
+          <ScalarProperty Name="ReportReason" ColumnName="ReportReason" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ads">
+      <EntityTypeMapping TypeName="IFdbModel.Ad">
+        <MappingFragment StoreEntitySet="Ads">
+          <ScalarProperty Name="AdId" ColumnName="AdId" />
+          <ScalarProperty Name="AdTitle" ColumnName="AdTitle" />
+          <ScalarProperty Name="AdCategory" ColumnName="AdCategory" />
+          <ScalarProperty Name="AdLocality" ColumnName="AdLocality" />
+          <ScalarProperty Name="AdCity" ColumnName="AdCity" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorPhoneNumber" ColumnName="VendorPhoneNumber" />
+          <ScalarProperty Name="AdImageOne" ColumnName="AdImageOne" />
+          <ScalarProperty Name="AdImageTwo" ColumnName="AdImageTwo" />
+          <ScalarProperty Name="AdImageThree" ColumnName="AdImageThree" />
+          <ScalarProperty Name="AdImageFour" ColumnName="AdImageFour" />
+          <ScalarProperty Name="AdImageFive" ColumnName="AdImageFive" />
+          <ScalarProperty Name="AdDescription" ColumnName="AdDescription" />
+          <ScalarProperty Name="AdSellingPrice" ColumnName="AdSellingPrice" />
+          <ScalarProperty Name="AdHighestBid" ColumnName="AdHighestBid" />
+          <ScalarProperty Name="Filter" ColumnName="Filter" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsSold" ColumnName="IsSold" />
+          <ScalarProperty Name="SoldDate" ColumnName="SoldDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="IsEligibleForRepost" ColumnName="IsEligibleForRepost" />
+          <ScalarProperty Name="NoOfDemands" ColumnName="NoOfDemands" />
+          <ScalarProperty Name="AdDivision" ColumnName="AdDivision" />
+          <ScalarProperty Name="isDisplayPhoneNumber" ColumnName="isDisplayPhoneNumber" />
+          <ScalarProperty Name="NoOfBids" ColumnName="NoOfBids" />
+          <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdsDemands">
+      <EntityTypeMapping TypeName="IFdbModel.AdsDemand">
+        <MappingFragment StoreEntitySet="AdsDemands">
+          <ScalarProperty Name="DemandId" ColumnName="DemandId" />
+          <ScalarProperty Name="AdId" ColumnName="AdId" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="DemandDate" ColumnName="DemandDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IFdbModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CityMasterTables">
+      <EntityTypeMapping TypeName="IFdbModel.CityMasterTable">
+        <MappingFragment StoreEntitySet="CityMasterTable">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Localities">
+      <EntityTypeMapping TypeName="IFdbModel.Locality">
+        <MappingFragment StoreEntitySet="Locality">
+          <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+          <ScalarProperty Name="LocalityName" ColumnName="LocalityName" />
+          <ScalarProperty Name="LocalityCity" ColumnName="LocalityCity" />
+          <ScalarProperty Name="LocalityDivision" ColumnName="LocalityDivision" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFeedbacks">
+      <EntityTypeMapping TypeName="IFdbModel.UserFeedback">
+        <MappingFragment StoreEntitySet="UserFeedback">
+          <ScalarProperty Name="UserFeedbackId" ColumnName="UserFeedbackId" />
+          <ScalarProperty Name="CurrentUserToken" ColumnName="CurrentUserToken" />
+          <ScalarProperty Name="CurrentUserName" ColumnName="CurrentUserName" />
+          <ScalarProperty Name="ReviewerUserToken" ColumnName="ReviewerUserToken" />
+          <ScalarProperty Name="ReviewerUserName" ColumnName="ReviewerUserName" />
+          <ScalarProperty Name="FeedbackText" ColumnName="FeedbackText" />
+          <ScalarProperty Name="FeedbackRating" ColumnName="FeedbackRating" />
+          <ScalarProperty Name="ReviewedDate" ColumnName="ReviewedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserNotifications">
+      <EntityTypeMapping TypeName="IFdbModel.UserNotification">
+        <MappingFragment StoreEntitySet="UserNotifications">
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="AdOrWishId" ColumnName="AdOrWishId" />
+          <ScalarProperty Name="isFirstBid" ColumnName="isFirstBid" />
+          <ScalarProperty Name="isHigherBid" ColumnName="isHigherBid" />
+          <ScalarProperty Name="isDemand" ColumnName="isDemand" />
+          <ScalarProperty Name="isFulfill" ColumnName="isFulfill" />
+          <ScalarProperty Name="isCommentForAd" ColumnName="isCommentForAd" />
+          <ScalarProperty Name="isCommentForWish" ColumnName="isCommentForWish" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+          <ScalarProperty Name="NotificationDate" ColumnName="NotificationDate" />
+          <ScalarProperty Name="isRead" ColumnName="isRead" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorToken" ColumnName="VendorToken" />
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
+          <ScalarProperty Name="isDisplayPhoneNumber" ColumnName="isDisplayPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IFdbModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="login_token" ColumnName="login_token" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserProfileImage" ColumnName="UserProfileImage" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="NumberOfBids" ColumnName="NumberOfBids" />
+          <ScalarProperty Name="NumberOfSales" ColumnName="NumberOfSales" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="IsLoggedIn" ColumnName="IsLoggedIn" />
+          <ScalarProperty Name="UserBadge" ColumnName="UserBadge" />
+          <ScalarProperty Name="FeedbackRating" ColumnName="FeedbackRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WishComments">
+      <EntityTypeMapping TypeName="IFdbModel.WishComment">
+        <MappingFragment StoreEntitySet="WishComments">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="WishId" ColumnName="WishId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WishFulfills">
+      <EntityTypeMapping TypeName="IFdbModel.WishFulfill">
+        <MappingFragment StoreEntitySet="WishFulfill">
+          <ScalarProperty Name="FulfillId" ColumnName="FulfillId" />
+          <ScalarProperty Name="WishId" ColumnName="WishId" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="FullfillDate" ColumnName="FullfillDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WishLists">
+      <EntityTypeMapping TypeName="IFdbModel.WishList">
+        <MappingFragment StoreEntitySet="WishList">
+          <ScalarProperty Name="WishId" ColumnName="WishId" />
+          <ScalarProperty Name="WishDescription" ColumnName="WishDescription" />
+          <ScalarProperty Name="WishCategory" ColumnName="WishCategory" />
+          <ScalarProperty Name="WishLocality" ColumnName="WishLocality" />
+          <ScalarProperty Name="WishCity" ColumnName="WishCity" />
+          <ScalarProperty Name="WishImage" ColumnName="WishImage" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsReported" ColumnName="IsReported" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="NoOfFulfill" ColumnName="NoOfFulfill" />
+          <ScalarProperty Name="WishDivision" ColumnName="WishDivision" />
+          <ScalarProperty Name="isDisplayPhoneNumber" ColumnName="isDisplayPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WishReports">
+      <EntityTypeMapping TypeName="IFdbModel.WishReport">
+        <MappingFragment StoreEntitySet="WishReports">
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="WishId" ColumnName="WishId" />
+          <ScalarProperty Name="ReportReason" ColumnName="ReportReason" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

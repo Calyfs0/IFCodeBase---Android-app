@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IFdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdBids">
+          <Key>
+            <PropertyRef Name="BidId" />
+          </Key>
+          <Property Name="BidId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdId" Type="int" Nullable="false" />
+          <Property Name="BidAmount" Type="int" Nullable="false" />
+          <Property Name="BidDate" Type="datetime" Nullable="false" />
+          <Property Name="IsHighestBid" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdComments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommentDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdReports">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdId" Type="int" Nullable="false" />
+          <Property Name="ReportReason" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReportDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ads">
+          <Key>
+            <PropertyRef Name="AdId" />
+          </Key>
+          <Property Name="AdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AdCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdLocality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VendorPhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdImageOne" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdImageTwo" Type="nvarchar(max)" />
+          <Property Name="AdImageThree" Type="nvarchar(max)" />
+          <Property Name="AdImageFour" Type="nvarchar(max)" />
+          <Property Name="AdImageFive" Type="nvarchar(max)" />
+          <Property Name="AdDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdSellingPrice" Type="int" Nullable="false" />
+          <Property Name="AdHighestBid" Type="int" />
+          <Property Name="Filter" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsSold" Type="bit" />
+          <Property Name="SoldDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="IsEligibleForRepost" Type="bit" />
+          <Property Name="NoOfDemands" Type="int" />
+          <Property Name="AdDivision" Type="nvarchar" MaxLength="50" />
+          <Property Name="isDisplayPhoneNumber" Type="bit" Nullable="false" />
+          <Property Name="NoOfBids" Type="int" Nullable="false" />
+          <Property Name="SoldPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdsDemands">
+          <Key>
+            <PropertyRef Name="DemandId" />
+          </Key>
+          <Property Name="DemandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdId" Type="int" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DemandDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CityMasterTable">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locality">
+          <Key>
+            <PropertyRef Name="LocalityId" />
+          </Key>
+          <Property Name="LocalityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocalityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocalityCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocalityDivision" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFeedback">
+          <Key>
+            <PropertyRef Name="UserFeedbackId" />
+          </Key>
+          <Property Name="UserFeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentUserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CurrentUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReviewerUserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReviewerUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeedbackText" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FeedbackRating" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="ReviewedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserNotifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdOrWishId" Type="int" Nullable="false" />
+          <Property Name="isFirstBid" Type="bit" Nullable="false" />
+          <Property Name="isHigherBid" Type="bit" Nullable="false" />
+          <Property Name="isDemand" Type="bit" Nullable="false" />
+          <Property Name="isFulfill" Type="bit" Nullable="false" />
+          <Property Name="isCommentForAd" Type="bit" Nullable="false" />
+          <Property Name="isCommentForWish" Type="bit" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NotificationDate" Type="datetime" Nullable="false" />
+          <Property Name="isRead" Type="bit" Nullable="false" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VendorToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isNew" Type="bit" />
+          <Property Name="isDisplayPhoneNumber" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Userid" />
+          </Key>
+          <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login_token" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserProfileImage" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="bigint" />
+          <Property Name="Rating" Type="bigint" />
+          <Property Name="NumberOfBids" Type="int" />
+          <Property Name="NumberOfSales" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" Nullable="false" />
+          <Property Name="IsLoggedIn" Type="bit" />
+          <Property Name="UserBadge" Type="int" Nullable="false" />
+          <Property Name="FeedbackRating" Type="decimal" Precision="18" Scale="1" />
+        </EntityType>
+        <EntityType Name="WishComments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WishId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommentDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishFulfill">
+          <Key>
+            <PropertyRef Name="FulfillId" />
+          </Key>
+          <Property Name="FulfillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WishId" Type="int" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullfillDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="WishId" />
+          </Key>
+          <Property Name="WishId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WishDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WishCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WishLocality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WishCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WishImage" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsReported" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="NoOfFulfill" Type="int" />
+          <Property Name="WishDivision" Type="nvarchar" MaxLength="50" />
+          <Property Name="isDisplayPhoneNumber" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishReports">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WishId" Type="int" Nullable="false" />
+          <Property Name="ReportReason" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReportDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UserToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IFdbModelStoreContainer">
+          <EntitySet Name="AdBids" EntityType="Self.AdBids" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdComments" EntityType="Self.AdComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdReports" EntityType="Self.AdReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ads" EntityType="Self.Ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdsDemands" EntityType="Self.AdsDemands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityMasterTable" EntityType="Self.CityMasterTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locality" EntityType="Self.Locality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFeedback" EntityType="Self.UserFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserNotifications" EntityType="Self.UserNotifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishComments" EntityType="Self.WishComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishFulfill" EntityType="Self.WishFulfill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishReports" EntityType="Self.WishReports" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IFdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdBid">
+          <Key>
+            <PropertyRef Name="BidId" />
+          </Key>
+          <Property Name="BidId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdId" Type="Int32" Nullable="false" />
+          <Property Name="BidAmount" Type="Int32" Nullable="false" />
+          <Property Name="BidDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsHighestBid" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdId" Type="Int32" Nullable="false" />
+          <Property Name="ReportReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="AdId" />
+          </Key>
+          <Property Name="AdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdLocality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VendorPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdImageOne" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdImageTwo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdImageThree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdImageFour" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdImageFive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdSellingPrice" Type="Int32" Nullable="false" />
+          <Property Name="AdHighestBid" Type="Int32" />
+          <Property Name="Filter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsSold" Type="Boolean" />
+          <Property Name="SoldDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsEligibleForRepost" Type="Boolean" />
+          <Property Name="NoOfDemands" Type="Int32" />
+          <Property Name="AdDivision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDisplayPhoneNumber" Type="Boolean" Nullable="false" />
+          <Property Name="NoOfBids" Type="Int32" Nullable="false" />
+          <Property Name="SoldPrice" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdsDemand">
+          <Key>
+            <PropertyRef Name="DemandId" />
+          </Key>
+          <Property Name="DemandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdId" Type="Int32" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DemandDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CityMasterTable">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Locality">
+          <Key>
+            <PropertyRef Name="LocalityId" />
+          </Key>
+          <Property Name="LocalityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocalityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocalityCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocalityDivision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFeedback">
+          <Key>
+            <PropertyRef Name="UserFeedbackId" />
+          </Key>
+          <Property Name="UserFeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentUserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReviewerUserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReviewerUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeedbackText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeedbackRating" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="ReviewedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserNotification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdOrWishId" Type="Int32" Nullable="false" />
+          <Property Name="isFirstBid" Type="Boolean" Nullable="false" />
+          <Property Name="isHigherBid" Type="Boolean" Nullable="false" />
+          <Property Name="isDemand" Type="Boolean" Nullable="false" />
+          <Property Name="isFulfill" Type="Boolean" Nullable="false" />
+          <Property Name="isCommentForAd" Type="Boolean" Nullable="false" />
+          <Property Name="isCommentForWish" Type="Boolean" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NotificationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isRead" Type="Boolean" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VendorToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isNew" Type="Boolean" />
+          <Property Name="isDisplayPhoneNumber" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Userid" />
+          </Key>
+          <Property Name="Userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login_token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserProfileImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="Int64" />
+          <Property Name="Rating" Type="Int64" />
+          <Property Name="NumberOfBids" Type="Int32" />
+          <Property Name="NumberOfSales" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsLoggedIn" Type="Boolean" />
+          <Property Name="UserBadge" Type="Int32" Nullable="false" />
+          <Property Name="FeedbackRating" Type="Decimal" Precision="18" Scale="1" />
+        </EntityType>
+        <EntityType Name="WishComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WishId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishFulfill">
+          <Key>
+            <PropertyRef Name="FulfillId" />
+          </Key>
+          <Property Name="FulfillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WishId" Type="Int32" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullfillDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="WishId" />
+          </Key>
+          <Property Name="WishId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WishDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WishCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WishLocality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WishCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WishImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsReported" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="NoOfFulfill" Type="Int32" />
+          <Property Name="WishDivision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDisplayPhoneNumber" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WishId" Type="Int32" Nullable="false" />
+          <Property Name="ReportReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IFdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdBids" EntityType="Self.AdBid" />
+          <EntitySet Name="AdComments" EntityType="Self.AdComment" />
+          <EntitySet Name="AdReports" EntityType="Self.AdReport" />
+          <EntitySet Name="Ads" EntityType="Self.Ad" />
+          <EntitySet Name="AdsDemands" EntityType="Self.AdsDemand" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="CityMasterTables" EntityType="Self.CityMasterTable" />
+          <EntitySet Name="Localities" EntityType="Self.Locality" />
+          <EntitySet Name="UserFeedbacks" EntityType="Self.UserFeedback" />
+          <EntitySet Name="UserNotifications" EntityType="Self.UserNotification" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="WishComments" EntityType="Self.WishComment" />
+          <EntitySet Name="WishFulfills" EntityType="Self.WishFulfill" />
+          <EntitySet Name="WishLists" EntityType="Self.WishList" />
+          <EntitySet Name="WishReports" EntityType="Self.WishReport" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IFdbModelStoreContainer" CdmEntityContainer="IFdbEntities">
+          <EntitySetMapping Name="AdBids">
+            <EntityTypeMapping TypeName="IFdbModel.AdBid">
+              <MappingFragment StoreEntitySet="AdBids">
+                <ScalarProperty Name="BidId" ColumnName="BidId" />
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="BidAmount" ColumnName="BidAmount" />
+                <ScalarProperty Name="BidDate" ColumnName="BidDate" />
+                <ScalarProperty Name="IsHighestBid" ColumnName="IsHighestBid" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdComments">
+            <EntityTypeMapping TypeName="IFdbModel.AdComment">
+              <MappingFragment StoreEntitySet="AdComments">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdReports">
+            <EntityTypeMapping TypeName="IFdbModel.AdReport">
+              <MappingFragment StoreEntitySet="AdReports">
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="ReportReason" ColumnName="ReportReason" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ads">
+            <EntityTypeMapping TypeName="IFdbModel.Ad">
+              <MappingFragment StoreEntitySet="Ads">
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="AdTitle" ColumnName="AdTitle" />
+                <ScalarProperty Name="AdCategory" ColumnName="AdCategory" />
+                <ScalarProperty Name="AdLocality" ColumnName="AdLocality" />
+                <ScalarProperty Name="AdCity" ColumnName="AdCity" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorPhoneNumber" ColumnName="VendorPhoneNumber" />
+                <ScalarProperty Name="AdImageOne" ColumnName="AdImageOne" />
+                <ScalarProperty Name="AdImageTwo" ColumnName="AdImageTwo" />
+                <ScalarProperty Name="AdImageThree" ColumnName="AdImageThree" />
+                <ScalarProperty Name="AdImageFour" ColumnName="AdImageFour" />
+                <ScalarProperty Name="AdImageFive" ColumnName="AdImageFive" />
+                <ScalarProperty Name="AdDescription" ColumnName="AdDescription" />
+                <ScalarProperty Name="AdSellingPrice" ColumnName="AdSellingPrice" />
+                <ScalarProperty Name="AdHighestBid" ColumnName="AdHighestBid" />
+                <ScalarProperty Name="Filter" ColumnName="Filter" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsSold" ColumnName="IsSold" />
+                <ScalarProperty Name="SoldDate" ColumnName="SoldDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="IsEligibleForRepost" ColumnName="IsEligibleForRepost" />
+                <ScalarProperty Name="NoOfDemands" ColumnName="NoOfDemands" />
+                <ScalarProperty Name="AdDivision" ColumnName="AdDivision" />
+                <ScalarProperty Name="isDisplayPhoneNumber" ColumnName="isDisplayPhoneNumber" />
+                <ScalarProperty Name="NoOfBids" ColumnName="NoOfBids" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdsDemands">
+            <EntityTypeMapping TypeName="IFdbModel.AdsDemand">
+              <MappingFragment StoreEntitySet="AdsDemands">
+                <ScalarProperty Name="DemandId" ColumnName="DemandId" />
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="DemandDate" ColumnName="DemandDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="IFdbModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityMasterTables">
+            <EntityTypeMapping TypeName="IFdbModel.CityMasterTable">
+              <MappingFragment StoreEntitySet="CityMasterTable">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localities">
+            <EntityTypeMapping TypeName="IFdbModel.Locality">
+              <MappingFragment StoreEntitySet="Locality">
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="LocalityName" ColumnName="LocalityName" />
+                <ScalarProperty Name="LocalityCity" ColumnName="LocalityCity" />
+                <ScalarProperty Name="LocalityDivision" ColumnName="LocalityDivision" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFeedbacks">
+            <EntityTypeMapping TypeName="IFdbModel.UserFeedback">
+              <MappingFragment StoreEntitySet="UserFeedback">
+                <ScalarProperty Name="UserFeedbackId" ColumnName="UserFeedbackId" />
+                <ScalarProperty Name="CurrentUserToken" ColumnName="CurrentUserToken" />
+                <ScalarProperty Name="CurrentUserName" ColumnName="CurrentUserName" />
+                <ScalarProperty Name="ReviewerUserToken" ColumnName="ReviewerUserToken" />
+                <ScalarProperty Name="ReviewerUserName" ColumnName="ReviewerUserName" />
+                <ScalarProperty Name="FeedbackText" ColumnName="FeedbackText" />
+                <ScalarProperty Name="FeedbackRating" ColumnName="FeedbackRating" />
+                <ScalarProperty Name="ReviewedDate" ColumnName="ReviewedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserNotifications">
+            <EntityTypeMapping TypeName="IFdbModel.UserNotification">
+              <MappingFragment StoreEntitySet="UserNotifications">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="AdOrWishId" ColumnName="AdOrWishId" />
+                <ScalarProperty Name="isFirstBid" ColumnName="isFirstBid" />
+                <ScalarProperty Name="isHigherBid" ColumnName="isHigherBid" />
+                <ScalarProperty Name="isDemand" ColumnName="isDemand" />
+                <ScalarProperty Name="isFulfill" ColumnName="isFulfill" />
+                <ScalarProperty Name="isCommentForAd" ColumnName="isCommentForAd" />
+                <ScalarProperty Name="isCommentForWish" ColumnName="isCommentForWish" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+                <ScalarProperty Name="NotificationDate" ColumnName="NotificationDate" />
+                <ScalarProperty Name="isRead" ColumnName="isRead" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorToken" ColumnName="VendorToken" />
+                <ScalarProperty Name="isNew" ColumnName="isNew" />
+                <ScalarProperty Name="isDisplayPhoneNumber" ColumnName="isDisplayPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IFdbModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="login_token" ColumnName="login_token" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserProfileImage" ColumnName="UserProfileImage" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="NumberOfBids" ColumnName="NumberOfBids" />
+                <ScalarProperty Name="NumberOfSales" ColumnName="NumberOfSales" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="IsLoggedIn" ColumnName="IsLoggedIn" />
+                <ScalarProperty Name="UserBadge" ColumnName="UserBadge" />
+                <ScalarProperty Name="FeedbackRating" ColumnName="FeedbackRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishComments">
+            <EntityTypeMapping TypeName="IFdbModel.WishComment">
+              <MappingFragment StoreEntitySet="WishComments">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="WishId" ColumnName="WishId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishFulfills">
+            <EntityTypeMapping TypeName="IFdbModel.WishFulfill">
+              <MappingFragment StoreEntitySet="WishFulfill">
+                <ScalarProperty Name="FulfillId" ColumnName="FulfillId" />
+                <ScalarProperty Name="WishId" ColumnName="WishId" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="FullfillDate" ColumnName="FullfillDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishLists">
+            <EntityTypeMapping TypeName="IFdbModel.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="WishId" ColumnName="WishId" />
+                <ScalarProperty Name="WishDescription" ColumnName="WishDescription" />
+                <ScalarProperty Name="WishCategory" ColumnName="WishCategory" />
+                <ScalarProperty Name="WishLocality" ColumnName="WishLocality" />
+                <ScalarProperty Name="WishCity" ColumnName="WishCity" />
+                <ScalarProperty Name="WishImage" ColumnName="WishImage" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsReported" ColumnName="IsReported" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="NoOfFulfill" ColumnName="NoOfFulfill" />
+                <ScalarProperty Name="WishDivision" ColumnName="WishDivision" />
+                <ScalarProperty Name="isDisplayPhoneNumber" ColumnName="isDisplayPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishReports">
+            <EntityTypeMapping TypeName="IFdbModel.WishReport">
+              <MappingFragment StoreEntitySet="WishReports">
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="WishId" ColumnName="WishId" />
+                <ScalarProperty Name="ReportReason" ColumnName="ReportReason" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserToken" ColumnName="UserToken" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
